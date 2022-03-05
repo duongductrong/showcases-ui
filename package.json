@@ -1,0 +1,25 @@
+{
+  "name": "showcases-ui",
+  "version": "1.0.0",
+  "description": "- To show-cases coding about user interface  - This can a component or templates or product single page",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass sass:public/css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/duongductrong/showcases-ui.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/duongductrong/showcases-ui/issues"
+  },
+  "homepage": "https://github.com/duongductrong/showcases-ui#readme",
+  "dependencies": {
+    "sass": "^1.49.9",
+    "sass-loader": "^12.6.0"
+  }
+}

@@ -17,4 +17,4 @@ npm install
 npm run sass
 ```
 
-#### III. To open showcases and see it
+#### III. To open showcases in folders you choose

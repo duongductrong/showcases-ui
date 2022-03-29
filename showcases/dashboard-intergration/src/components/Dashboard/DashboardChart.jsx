@@ -1,12 +1,14 @@
 import Chart from "chart.js/auto";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Paperation from "../Paperation/Paperation";
+import _ from "lodash";
 
 function DashboardChart() {
+  const [keyChart, setKeyChart] = useState(Math.random());
+
   useEffect(() => {
     const options = {
       responsive: true,
-      aspectRatio: 1.97658079625,
       interaction: {
         mode: "index",
         intersect: false,
@@ -88,27 +90,30 @@ function DashboardChart() {
       },
     ];
 
-    const chart = new Chart(document.querySelector("#dashboard-chart"), {
-      type: "line",
-      data: {
-        labels: labels,
-        datasets: datasets,
-      },
-      options: options,
-    });
+    function initializeChart() {
+      return new Chart(document.querySelector("#dashboard-chart"), {
+        type: "line",
+        data: {
+          labels: labels,
+          datasets: datasets,
+        },
+        options: options,
+      });
+    }
 
-    // chart.resize(500, 500);
-    // window.addEventListener("resize", () => {
-    //   const dashboardChart = document.querySelector(".dashboard-chart");
-    //   const { clientWidth, clientHeight } = dashboardChart;
+    const onResizeChart = _.debounce(() => {
+      setKeyChart(Math.random());
+      initializeChart();
+    }, 100);
 
-    //   chart.resize(clientWidth, clientHeight);
-    // });
+    window.addEventListener("resize", onResizeChart);
+
+    initializeChart();
   }, []);
 
   return (
     <Paperation className="dashboard-chart">
-      <canvas id="dashboard-chart"></canvas>
+      <canvas key={keyChart} id="dashboard-chart"></canvas>
     </Paperation>
   );
 }
